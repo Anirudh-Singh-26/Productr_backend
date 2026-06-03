@@ -122,6 +122,16 @@ const updateProduct = async (req, res, next) => {
 
     const updates = { ...req.body };
 
+    let existingImages = [];
+
+    if (updates.existingImages) {
+      existingImages = JSON.parse(updates.existingImages);
+    }
+
+    const newImages = req.files?.map((file) => file.path) || [];
+
+    updates.images = [...existingImages, ...newImages];
+
     if (typeof updates.weight === "string") {
       updates.weight = JSON.parse(updates.weight);
     }
