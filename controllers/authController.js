@@ -146,17 +146,14 @@ const getMe = async (req, res) => {
 
 // POST /api/auth/logout
 const logout = async (req, res) => {
-  res.clearCookie("token", {
+  res.cookie("token", "", {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
+    secure: true,
+    sameSite: "none",
+    expires: new Date(0),
   });
 
-  return sendSuccess(
-    res,
-    200,
-    "Logged out successfully"
-  );
+  return sendSuccess(res, 200, "Logged out successfully");
 };
 
 export { login, verifyOTP, resendOTP, getMe, logout };
