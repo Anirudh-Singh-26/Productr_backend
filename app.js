@@ -38,7 +38,7 @@ if (process.env.NODE_ENV === "development") {
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 
-app.get("/", (req, res) => {
+app.get("/test", (req, res) => {
   res.json({
     message: "Backend Running Successfully",
   });
