@@ -83,19 +83,8 @@ const getProductById = async (req, res, next) => {
 
 const createProduct = async (req, res, next) => {
   try {
-
-    console.log("========== CREATE PRODUCT ==========");
-    console.log("BODY:");
-    console.dir(req.body, { depth: null });
-
-    console.log("FILES:");
-    console.dir(req.files, { depth: null });
-
-    console.log("====================================");
-
     const productData = { ...req.body };
     productData.user = req.user._id;
-    console.log(req.files);
 
     if (req.files && req.files.length > 0) {
       productData.images = req.files.map((f) => f.path);
@@ -112,9 +101,7 @@ const createProduct = async (req, res, next) => {
 
     return sendSuccess(res, 201, "Product created successfully", { product });
   } catch (err) {
-    console.error("========== CREATE PRODUCT ERROR ==========");
     console.dir(error, { depth: null });
-    console.error("==========================================");
     next(err);
   }
 };
