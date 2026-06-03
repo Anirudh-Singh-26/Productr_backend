@@ -1,4 +1,4 @@
-# Productr Backend API
+# Productr Backend
 
 ## Overview
 Productr Backend is a Node.js, Express, and MongoDB REST API that powers the Productr product management dashboard. It provides OTP-based authentication, JWT session management using HttpOnly cookies, product management APIs, image uploads, and secure user access control.
