@@ -89,14 +89,6 @@ const updateProduct = async (req, res, next) => {
       _id: req.params.id,
       user: req.user._id,
     });
-
-    if (!product) {
-      if (req.files && req.files.length > 0) {
-        deleteImageFiles(req.files.map((f) => f.path));
-      }
-      return sendError(res, 404, "Product not found");
-    }
-
     const updates = { ...req.body };
 
     let existingImages = [];
@@ -117,9 +109,6 @@ const updateProduct = async (req, res, next) => {
 
     return sendSuccess(res, 200, "Product updated successfully", { product: updated });
   } catch (err) {
-    if (req.files && req.files.length > 0) {
-      deleteImageFiles(req.files.map((f) => f.path));
-    }
     next(err);
   }
 };
