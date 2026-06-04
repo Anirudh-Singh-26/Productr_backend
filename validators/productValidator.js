@@ -31,55 +31,11 @@ const createProductValidator = [
     .withMessage("Quantity is required")
     .isInt({ min: 0 })
     .withMessage("Quantity must be a non-negative integer"),
-
-  body("description")
-    .optional()
-    .isLength({ max: 2000 })
-    .withMessage("Description must not exceed 2000 characters")
-    .trim(),
-
-  body("sku")
-    .optional()
-    .isAlphanumeric()
-    .withMessage("SKU must be alphanumeric")
-    .isLength({ max: 50 })
-    .withMessage("SKU must not exceed 50 characters")
-    .trim(),
-
+    
   body("status")
     .optional()
     .isIn(["published", "unpublished"])
     .withMessage("Status must be 'published' or 'unpublished'"),
-
-  body("weight.value")
-    .optional()
-    .isFloat({ min: 0 })
-    .withMessage("Weight value must be a non-negative number"),
-
-  body("weight.unit")
-    .optional()
-    .isIn(["kg", "g", "lb", "oz"])
-    .withMessage("Weight unit must be kg, g, lb, or oz"),
-
-  body("dimensions.length")
-    .optional()
-    .isFloat({ min: 0 })
-    .withMessage("Dimension length must be a non-negative number"),
-
-  body("dimensions.width")
-    .optional()
-    .isFloat({ min: 0 })
-    .withMessage("Dimension width must be a non-negative number"),
-
-  body("dimensions.height")
-    .optional()
-    .isFloat({ min: 0 })
-    .withMessage("Dimension height must be a non-negative number"),
-
-  body("dimensions.unit")
-    .optional()
-    .isIn(["cm", "mm", "in"])
-    .withMessage("Dimension unit must be cm, mm, or in"),
 ];
 
 const updateProductValidator = [
